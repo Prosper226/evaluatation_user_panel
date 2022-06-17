@@ -19,11 +19,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 <div class="w3-top">
   <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Panel</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Neeleader</a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+  <a href="login" onclick="return confirm('Vous êtes sûr de vouloir vous déconnecter ?');" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
     <img src="assets/w3c/avatar3.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
   </a>
   </div>
@@ -134,10 +134,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         
         <?php
           if(isset($_GET['level'])){
-            $bar = 10 * $_GET['level'];
+            $bar   = ($_GET['level'] <= 10) ? 10 * $_GET['level'] : 1;
+            $level = ($_GET['level'] <= 10) ? $_GET['level'] : 1;
         ?>
           <div class="w3-light-grey w3-round-large">
-            <div class="w3-container w3-green w3-round-large" style="width:<?php echo $bar?>%"><?php echo $_GET['level']."/10"?></div>
+            <div class="w3-container w3-green w3-round-large" style="width:<?php echo $bar?>%"><?php echo $level."/10"?></div>
           </div>
         <?php
           }else{
@@ -191,7 +192,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
             }else{
           ?>
             <p class="w3-center">
-              <a href="resume.php" class="w3-button w3-section w3-green w3-ripple"> Voir le resumé </a>
+              <a href="resume" class="w3-button w3-section w3-green w3-ripple"> Voir le resumé </a>
             </p>
           <?php
             }
@@ -209,6 +210,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
               <h6 class="w3-opacity">Laisser un message à l'administrateur</h6>
               <p contenteditable="true" class="w3-border w3-padding">Message: ......</p>
               <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Envoyer</button> 
+              <!-- <a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext"> -->
             </div>
           </div>
         </div>
@@ -280,6 +282,14 @@ function openNav() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
+// function whatsapp(id){
+//   let msg = document.getElementById(id)
+//   if(msg){
+
+//   }
+// }
+
 </script>
 
 </body>

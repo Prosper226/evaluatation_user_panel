@@ -19,11 +19,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 <div class="w3-top">
   <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Panel</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Neeleader</a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+  <a href="login" onclick="return confirm('Vous êtes sûr de vouloir vous déconnecter ?');" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
     <img src="assets/w3c/avatar3.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
   </a>
   </div>
@@ -311,8 +311,8 @@ function openNav() {
 }
 
 function nextHyperLinks() {
-  document.getElementById("id01").href = "panel.php?already=true"; // you probably don't need this if you will anyway navigate away from the page.
-  window.open('panel.php?already=true', '_self');
+  document.getElementById("id01").href = "panel?already=true"; // you probably don't need this if you will anyway navigate away from the page.
+  window.open('panel?already=true', '_self');
 }
 
 </script>
