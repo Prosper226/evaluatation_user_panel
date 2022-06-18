@@ -21,8 +21,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Neeleader</a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+  <a href="https://api.whatsapp.com/send?phone=22555907780&text=Bonjour,." target="_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-whatsapp"></i></a>
+  <a href="mailto:nongomariam@neeleader.com" target="_blank" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
   <a href="login" onclick="return confirm('Vous êtes sûr de vouloir vous déconnecter ?');" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
     <img src="assets/w3c/avatar3.png" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
   </a>
@@ -73,24 +73,17 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <div class="w3-row-padding">
          <br>
            <div class="w3-half">
-             <img src="assets/w3c/lights.jpeg" style="width:100%" class="w3-margin-bottom">
+             <img src="assets/w3c/gallerie3.jpeg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="/assets/w3c/nature.jpeg" style="width:100%" class="w3-margin-bottom">
-           </div>
-
-           <div class="w3-half">
-             <img src="assets/w3c/nature.jpeg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="assets/w3c/lights.jpeg" style="width:100%" class="w3-margin-bottom">
+             <img src="/assets/w3c/gallerie2.jpeg" style="width:100%" class="w3-margin-bottom">
            </div>
 
            <div class="w3-half">
-             <img src="/assets/w3c/lights.jpeg" style="width:100%" class="w3-margin-bottom">
+             <img src="assets/w3c/gallerie4.jpeg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="assets/w3c/nature.jpeg" style="width:100%" class="w3-margin-bottom">
+             <img src="assets/w3c/gallerie7.jpeg" style="width:100%" class="w3-margin-bottom">
            </div>
          </div>
           </div>
@@ -116,19 +109,22 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     <!-- Middle Column -->
     <div class="w3-col m7">
     
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="assets/w3c/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-        <h4>Neeleader Admin</h4><br>
-        <!-- <hr class="w3-clear"> -->
-        <p>
-        Bienvenue Prosper SEDGO, ici vous pouvez nous dire ce que vous pensez de vos collaborateurs.
-        Pour cela , vous devez nous citer, 3 qualités de chacun de vos collaborateurs en remplissant le formulaire
-        ci-dessous.
-        </p>
-        
-      </div>
-      
+      <?php
+          if(! isset($_GET['level'])){ ?>
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <img src="assets/w3c/mariam2.jpeg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px; height:60px">
+          <span class="w3-right w3-opacity">1 min</span>
+          <h4>Neeleader Admin</h4><br>
+          <!-- <hr class="w3-clear"> -->
+          <p>
+          Bienvenue Prosper SEDGO, ici vous pouvez nous dire ce que vous pensez de vos collaborateurs.
+          Pour cela , vous devez nous citer, 3 qualités de chacun de vos collaborateurs en remplissant le formulaire
+          ci-dessous.
+          </p>
+          
+        </div>
+      <?php } ?>
+
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <!-- <center><h4>Formulaire de qualités</h4><br></center> -->
         
@@ -153,7 +149,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
         <form action="controllers/addQos.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin" method="post">
           <h2 class="w3-center">Evaluations de qualités</h2>
-          
+          <?php
+            $level = (isset($_GET['level'])) ? $_GET['level'] : 1;
+          ?>
+          <input type="hidden" name="level" value="<?php echo $level?>"/>
+
           <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
               <div class="w3-rest">
@@ -203,28 +203,29 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <hr class="w3-clear">
       </div>
       
-      <div class="w3-row-padding">
+      <!-- <div class="w3-row-padding">
         <div class="w3-col m12">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Laisser un message à l'administrateur</h6>
-              <p contenteditable="true" class="w3-border w3-padding">Message: ......</p>
-              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Envoyer</button> 
-              <!-- <a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext"> -->
+              <p contenteditable="true" id="wa_msg" class="w3-border w3-padding">Message: ......</p>
+              <a onclick="whatsapp();" type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> Envoyer</a> 
+              <!<a href="https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext"> ->
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     <!-- End Middle Column -->
+    
     </div>
     
     <!-- Right Column -->
     <div class="w3-col m2">
-      <div class="w3-card w3-round w3-white w3-center">
+      <div class="w3-card w3-round w3-white w3-center w3-margin">
         <div class="w3-container">
           <p>Evénement à venir :</p>
-          <img src="assets/w3c/nature.jpeg" alt="Forest" style="width:100%;">
-          <p><strong>Vacances</strong></p>
+          <img src="assets/w3c/gallerie8.jpeg" alt="Forest" style="width:100%;">
+          <p><strong>Communiquer plus</strong></p>
           <p>Lundi 15:00</p>
           <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
         </div>
@@ -232,12 +233,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <br>
       
       <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-        <p>ADS</p>
+        <p><a href="mailto:nongomariam@neeleader.com" target="_blank"><i class="fa fa-envelope" style="font-size:36px;color:black"></i></a></p>
       </div>
       <br>
       
       <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-        <p><i class="fa fa-bug w3-xxlarge"></i></p>
+        <!-- <p><i class="fa fa-bug w3-xxlarge"></i></p> -->
+        <p><a href="https://api.whatsapp.com/send?phone=22555907780&text=Bonjour,." target="_blank"><i class="fa fa-whatsapp" style="font-size:48px;color:green"></i></a></p>
       </div>
       
     <!-- End Right Column -->
@@ -283,13 +285,25 @@ function openNav() {
   }
 }
 
-// function whatsapp(id){
-//   let msg = document.getElementById(id)
-//   if(msg){
 
+// function whatsapp(){
+//   let msg = document.getElementById("wa_msg").value;
+//   if(msg){
+//     let num   = 22660565103
+//     let name  = 'Prosper SEDGO'
+//     var win   = window.open('https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext', '_blank');
 //   }
 // }
 
+function whatsapp() {
+  let msg = document.getElementById("wa_msg").textContent;
+  if(msg.length){
+    let num   = 22660565103
+    let name  = 'Prosper SEDGO'
+    var win   = window.open(`https://api.whatsapp.com/send?phone=22660565103&text=Testmessage`, '_blank');
+    alert(msg);
+  }
+}
 </script>
 
 </body>
